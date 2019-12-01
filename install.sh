@@ -106,9 +106,7 @@ chrony_install(){
     chronyc sourcestats -v
     chronyc tracking -v
     date
-    #read -p "请确认时间是否准确,误差范围±3分钟(Y/N): " chrony_install
-    echo "请确认时间是否准确,误差范围±3分钟(Y/N): "
-    read chrony_install;
+    read-p "请确认时间是否准确,误差范围±3分钟(Y/N): " chrony_install
     [[ -z ${chrony_install} ]] && chrony_install="Y"
     case $chrony_install in
         [yY][eE][sS]|[yY])
@@ -310,7 +308,8 @@ ssl_install(){
     judge "安装 SSL 证书生成脚本"
 }
 domain_check(){
-    read -p "请输入你的域名信息(eg:www.wulabing.com):" domain
+    echo "请输入你的域名信息(eg:www.wulabing.com):"
+    read domain
     domain_ip=`ping ${domain} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
     echo -e "${OK} ${GreenBG} 正在获取 公网ip 信息，请耐心等待 ${Font}"
     local_ip=`curl -4 ip.sb`
