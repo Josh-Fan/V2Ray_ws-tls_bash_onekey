@@ -309,7 +309,7 @@ ssl_install(){
 }
 domain_check(){
     read -p "请输入你的域名信息:" domain
-    [[ -z ${domain} ]] && domain="www.speedspider.online"
+    [[ -z ${domain} ]] && domain="2fast.speedspider.online"
     domain_ip=`ping ${domain} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
     echo -e "${OK} ${GreenBG} 正在获取 公网ip 信息，请耐心等待 ${Font}"
     local_ip=`curl -4 ip.sb`
