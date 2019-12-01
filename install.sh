@@ -106,8 +106,8 @@ chrony_install(){
     chronyc sourcestats -v
     chronyc tracking -v
     date
-    read-p "请确认时间是否准确,误差范围±3分钟(Y/N): " chrony_install
-    [[ -z ${chrony_install} ]] && chrony_install="Y"
+    read -p "请确认时间是否准确,误差范围±3分钟(Y/N): " chrony_install
+    [[ -z ${chrony_install} ]] && chrony_install="N"
     case $chrony_install in
         [yY][eE][sS]|[yY])
             echo -e "${GreenBG} 继续安装 ${Font}"
